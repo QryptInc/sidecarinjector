@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+
+  proxy-a:
+    build:
+      context: .
+      dockerfile: Dockerfile-proxy-A
+    ports:
+    - "5001:5001"
+    - "8001:8001"

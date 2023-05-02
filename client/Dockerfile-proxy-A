@@ -1,0 +1,6 @@
+FROM qryptdev001/securetunnel-envoy:1.0.19
+
+COPY ./envoy-A.yaml /etc/envoy.yaml
+
+RUN chmod go+r /etc/envoy.yaml
+CMD ["/usr/local/bin/envoy", "-c /etc/envoy.yaml", "-l warn"]

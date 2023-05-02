@@ -27,9 +27,24 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+[Helm](https://helm.sh) must be installed to use the charts.  Please refer to
+Helm's [documentation](https://helm.sh/docs) to get started.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Once Helm has been set up correctly, add the repo as follows:
+
+  helm repo add qrypt-sc https://docs.qrypt.com/sidecarinjector/
+
+If you had already added this repo earlier, run `helm repo update` to retrieve
+the latest versions of the packages.  You can then run `helm search repo
+qrypt-sc` to see the charts.
+
+To install the sidecarinjector chart:
+
+    helm install my-sidecarinjector qrypt-sc/sidecarinjector
+
+To uninstall the chart:
+
+    helm delete my-sidecarinjector
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
