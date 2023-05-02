@@ -1,0 +1,35 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned-issuer
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "10"
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .Values.appname }}-certificate
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "10"
+spec:
+  isCA: true
+  secretName: {{ .Values.appname }}-certificate
+  commonName: {{ .Values.appname }}.{{ .Release.Namespace }}.svc
+  dnsNames:
+  - {{ .Values.appname }}.{{ .Release.Namespace }}.svc
+  - localhost
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+    - client auth
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.appname }}-webhook-configmap
+  namespace: {{ .Release.Namespace }}
+data:
+  sidecarconfig.yaml: {{ toYaml .Values.sidecarconfig | indent 2 }}
+  mutationconfig.yaml: {{ toYaml .Values.mutationconfig | indent 2 }}
