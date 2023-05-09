@@ -44,7 +44,7 @@ static_resources:
             address:
               socket_address:
                 address: FILL_IN
-                port_value: 8081
+                port_value: 80
 
 admin:
   address:
